@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+{% if current_user.is_authenticated %}
+  {% extends 'usernav.html' %}
+  {% block content%}
+   <h3 class="block mb-2 font-medium">Select a slot</h3>
+    <div class="grid grid-cols-3 gap-4">
+        {% for i in range(24) %}
+        <a href={{url_for('availvc')}}>
+          <button name="slot" value="{{ '%02d:00' % i }}" class="px-4 py-2 bg-blue-500 text-white rounded">{{ '%d:00 %s' % ((i+11)%12+1, 'AM' if i<12 else 'PM') }}</button>
+        </a>
+        {% endfor %}    
+    </div>   
+     {%endblock%}
+     {%endif%}
+</body>
+</html>

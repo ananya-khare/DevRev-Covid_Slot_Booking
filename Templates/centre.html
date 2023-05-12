@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Centers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="p-4"></body>
+  {% if current_user.is_authenticated %}
+  {% extends 'usernav.html' %}
+  {% block content%}
+    <form action="/selectdate" method="post">
+      <label for="dropdown" class="block mb-2 font-medium">Select an option:</label>
+      <select id="dropdown" name="vc" class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500">
+        {% for vc in response%}
+        <option value={{vc.name}}>{{vc.name}}</option>
+        {% endfor %}
+      </select>
+      <input value="Submit and Select Date" type="submit" class="mt-4 py-2 px-4 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+    </form>
+    {%endblock%}
+    {% endif %}
+  </body>
+</html>

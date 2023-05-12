@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  {% if current_user.is_authenticated %}
+  {% extends 'usernav.html' %}
+  {% block content%}
+  <body class="bg-gray-100">
+    <div class="max-w-md mx-auto mt-10">
+      <h1 class="text-2xl font-bold mb-5">Hi Admin</h1>
+      <div class="flex justify-center">
+        <a href='{{url_for('vaccination_centres')}}'><button value="Manage Centres" action= type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg mr-5">Manage Centres</button></a>
+        <a href='{{url_for('display_all_bookings')}}'><button value="Show All Bookings" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg mr-5">Show All Bookings</button></a>
+        <a href='{{url_for('adminsignupform')}}'><button value="Show All Bookings" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg mr-5">Add New Admin</button></a>
+      </div>
+    </div>
+    {%endblock%}
+    {% endif %}
+  </body>
+  
+  
+</html>

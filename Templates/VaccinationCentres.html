@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>All Centres</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  {% if current_user.is_authenticated %}
+  {% extends 'usernav.html' %}
+  {%block content%}
+  <body class="bg-gray-100">
+    <div class="max-w-md mx-auto mt-10">
+      <h1 class="text-2xl font-bold mb-5">Vaccination Centres</h1>
+      <a href="/admin/add_vaccination_centre"><button action="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+        Add New Centre
+      </button></a>
+      <table class="table-auto w-full">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">ID</th>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Location</th>
+            <th class="px-4 py-2">Opening Time</th>
+            <th class="px-4 py-2">Closing Time</th>
+            <th class="px-4 py-2">Available Slots</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in response %} 
+          <tr>
+            <td class="border px-4 py-2">{{o.id}}</td>
+            <td class="border px-4 py-2">{{o.name}}</td>
+            <td class="border px-4 py-2">{{o.loc}}</td>
+            <td class="border px-4 py-2">{{o.ot}}</td>
+            <td class="border px-4 py-2">{{o.ct}}</td>
+            <td class="border px-4 py-2">
+              <input value="Delete" type="submit" action= class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+            </td>
+          </tr>
+          {% endfor %}
+          <!-- add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </body>
+  {%endblock%}
+  {%endif%}
+</html>

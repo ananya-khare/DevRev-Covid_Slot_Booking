@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+  {% if current_user.is_authenticated %}
+  {% extends 'usernav.html' %}
+  {% block content%}
+    <form action="/book" method="POST">
+        <div class="flex flex-col space-y-4">
+          <label for="date" class="text-lg font-medium">Select a date:</label>
+          <input type="date" id="date" name="date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <button type="submit" class="inline-flex items-center px-6 py-3 mt-4 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Submit
+          </button>
+        </div>
+      </form>
+      {%endblock%}
+      {% endif %}
+</body>
+</html>
